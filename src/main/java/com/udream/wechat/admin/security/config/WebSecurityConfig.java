@@ -16,8 +16,9 @@ import com.udream.wechat.admin.security.service.InternalUserDetailService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/home","/h2-console").permitAll().anyRequest().authenticated().and().formLogin()
-				.loginPage("/login").permitAll().and().logout().permitAll();
+		http.authorizeRequests().antMatchers("/", "/error", "/home", "/h2-console", "/wechat/**").permitAll()
+				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
+				.permitAll();
 	}
 
 	@Autowired
@@ -27,9 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
 	}
-	
+
 	@Bean
 	public static NoOpPasswordEncoder passwordEncoder() {
-	return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+		return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
 	}
 }
