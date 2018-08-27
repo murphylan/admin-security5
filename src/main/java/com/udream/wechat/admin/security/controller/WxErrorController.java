@@ -1,4 +1,4 @@
-package com.udream.wechat.admin.wechat.controller;
+package com.udream.wechat.admin.security.controller;
 
 import java.util.Map;
 
@@ -71,7 +71,6 @@ public class WxErrorController implements ErrorController {
 		return ERROR_PATH;
 	}
 
-	@SuppressWarnings("static-method")
 	private boolean getTraceParameter(HttpServletRequest request) {
 		String parameter = request.getParameter("trace");
 		if (parameter == null) {
@@ -91,7 +90,6 @@ public class WxErrorController implements ErrorController {
 		return map;
 	}
 
-	@SuppressWarnings("static-method")
 	private HttpStatus getStatus(HttpServletRequest request) {
 		Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
 		if (statusCode != null) {

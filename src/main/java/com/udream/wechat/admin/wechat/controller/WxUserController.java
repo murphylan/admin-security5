@@ -28,7 +28,7 @@ public class WxUserController {
 	public String authorize(String returnUrl) {
 		// 1.配置
 		String url = " ";
-		String redirectUrl = wxService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, "");
+		String redirectUrl = wxService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_USERINFO, "state");
 
 		logger.info("【微信网页授权】 获取code ， redirectUrl={}", redirectUrl);
 
